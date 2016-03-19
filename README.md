@@ -1,6 +1,6 @@
 # koa-request-log
 
-## a middleware for koa request logs
+a middleware for koa request logs
 
 # Installation
 
@@ -9,26 +9,26 @@
 # Key features
 
 - log request include method、url、ip etc.
-- log response include time、status etc.
+- log response include duration etc.
 - hightlight key field(one of `mthod/url/ip etc.`)
-- log into file or just console
+- log into file 、just console or both
 
 # Log Fields
 
-- Method(GET/POST/DELETE etc.)
-- URL
-- Response Time
-- Status Code
+- url
+- status
+- duration
+- method(get/post/delete etc.)
 - `ip`
 - `query`
+- `protocol`
 - `acceptsCharsets`
 - `acceptsEncodings`
-- `protocol`
-- etc.(Wait to Add)
+- etc.
 
 # Usage
 
-## just require the package after routes
+just require the package after routes
 
 # Demo
 
@@ -44,3 +44,7 @@ app
 
 app.listen(3000);
 ```
+
+## License
+
+(The MIT License)
