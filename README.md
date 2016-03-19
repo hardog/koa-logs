@@ -1,6 +1,7 @@
 ## koa-request-log
 
 a middleware for koa request logs
+![koa-request-log](http://startexample.com/images/assist/20160319/koa-request-log1.png)
 
 ## installation
 

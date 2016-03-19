@@ -10,18 +10,18 @@ require('colors');
 app
 .use(routes)
 .use(requestLog({
-	type: 'both',
+	// type: 'both',
 	contrast: 'cyan',
-	highlight: {
-		field: 'method',
-		color: 'red'
-	},
+	// highlight: {
+	// 	field: 'method',
+	// 	color: 'red'
+	// },
 	duration: {
 		use: true,
 		warning: 1, // ms units
 		danger: 6
 	},
-	fields: ['url', 'duration']
+	fields: ['method', 'url', 'status', 'duration']
 }));
 
 app.listen(3000);
