@@ -1,36 +1,59 @@
-# koa-request-log
+## koa-request-log
 
 a middleware for koa request logs
 
-# Installation
+## installation
 
 `$ npm install koa-request-log`
 
-# Key features
+## features
 
 - log request include method、url、ip etc.
-- log response include duration etc.
+- log response include duration、status etc.
 - hightlight key field(one of `mthod/url/ip etc.`)
 - log into file 、just console or both
 
-# Log Fields
+## configuration
 
+```
+{
+	type: 'console', 			// 'console', file', 'both', default console
+	path: './logs/request.log', // actived for file/both type, default ./logs/request.log
+	contrast: 'white',			// default white
+	hightlight: {
+		field: 'status',
+		color: 'green'			// provided by colors package
+	},
+	duration: {
+		//color: lt< 30 green, gt>30 & lt<50 yellow, gt>50 red
+		use: true/false, 	// default false
+		warning: 30, 		// ms as units, default 30
+		danger: 50			// default 50
+	},
+	// it's order decide the console order
+	fields: ['method', 'url', 'status', 'duration']
+}
+```
+
+## log Fields
+
+following list some of koa ctx variable which you can use in koa-request-log
+
+- method
+- ip
+- query
 - url
+- protocol
 - status
 - duration
-- method(get/post/delete etc.)
-- `ip`
-- `query`
-- `protocol`
-- `acceptsCharsets`
-- `acceptsEncodings`
-- etc.
+- acceptsCharsets
+- acceptsEncodings
 
-# Usage
+## usage
 
-just require the package after routes
+Just require the package after routes
 
-# Demo
+## demo
 
 ```
 let koa = require('koa'),

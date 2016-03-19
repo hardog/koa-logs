@@ -6,9 +6,23 @@ let koa = require('koa'),
 	app = new koa();
 
 require('colors');
+
 app
 .use(routes)
-.use(requestLog());
+.use(requestLog({
+	type: 'both',
+	contrast: 'cyan',
+	highlight: {
+		field: 'method',
+		color: 'red'
+	},
+	duration: {
+		use: true,
+		warning: 1, // ms units
+		danger: 6
+	},
+	fields: ['url', 'duration']
+}));
 
 app.listen(3000);
 console.log('Example Server is running at http://localhost:3000'.green);

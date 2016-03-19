@@ -1,1 +1,9 @@
-console.log('hello , wait to add test code');
+'use strict';
+
+let Assert = require('chai').assert;
+
+describe('lib/log.js', () => {
+	it('wait TODO', () => {
+		// Wait TODO
+	});
+});
