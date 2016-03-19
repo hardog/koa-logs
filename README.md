@@ -10,8 +10,8 @@ a middleware for koa request logs
 
 - log request include method、url、ip etc.
 - log response include duration、status etc.
-- hightlight key field(one of `mthod/url/ip etc.`)
-- log into file 、just console or both
+- highlight fields, only one
+- save to file、console or both
 
 ## configuration
 
@@ -30,7 +30,7 @@ a middleware for koa request logs
 		warning: 30, 		// ms as units, default 30
 		danger: 50			// default 50
 	},
-	// it's order decide the console order
+	// it's order decide the terminal show order
 	fields: ['method', 'url', 'status', 'duration']
 }
 ```
