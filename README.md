@@ -6,6 +6,15 @@ a middleware for koa request logs
 
 `$ npm install koa-request-log`
 
+## environment require
+
+current tested:
+
+```
+node >= 4.x
+koa >= 1.2.0
+```
+
 ## features
 
 - log request include method、url、ip etc.
