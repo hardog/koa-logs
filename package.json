@@ -29,6 +29,8 @@
     "log4js": "^0.6.33"
   },
   "devDependencies": {
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "koa": "^1.2.0",
+    "koa-router": "^5.4.0"
   }
 }
