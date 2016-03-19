@@ -12,7 +12,7 @@ current tested:
 
 ```
 node >= 4.x
-koa >= 1.2.0
+koa : 1.2.0
 ```
 
 ## features
