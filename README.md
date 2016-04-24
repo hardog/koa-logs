@@ -21,14 +21,11 @@ koa : 1.2.0
 - log request include method、url、ip etc.
 - log response include duration、status etc.
 - highlight fields, only one
-- save to file、console or both
 
 ## configuration
 
 ```
 {
-	type: 'console', 			// 'console', file', 'both', default console
-	path: './logs/request.log', // actived for file/both type, default ./logs/request.log
 	contrast: 'white',			// default white
 	hightlight: {
 		field: 'status',

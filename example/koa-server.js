@@ -10,7 +10,6 @@ require('colors');
 app
 .use(routes)
 .use(requestLog({
-	// type: 'both',
 	contrast: 'cyan',
 	// highlight: {
 	// 	field: 'method',
