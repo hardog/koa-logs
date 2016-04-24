@@ -10,11 +10,11 @@ require('colors');
 app
 .use(routes)
 .use(requestLog({
-	contrast: 'cyan',
-	// highlight: {
-	// 	field: 'method',
-	// 	color: 'red'
-	// },
+	// contrast: 'cyan',
+	highlight: {
+		field: 'status',
+		color: 'red'
+	},
 	duration: {
 		use: true,
 		warning: 1, // ms units
