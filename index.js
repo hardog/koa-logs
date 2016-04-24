@@ -26,8 +26,8 @@ module.exports = (param) => {
 				val = ctx[key];
 
 				if(key === 'duration'){ val = duration; }
-				// acceptsCharsets etc. is a function
-				requestInfo.push(`${key}:${typeof val === 'function': val() : val}`);
+				val = (typeof val === 'object' ? JSON.stringify(val) : val);
+				requestInfo.push(`${key}:${val}`);
 			}
 
 	    	// show info

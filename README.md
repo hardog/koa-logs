@@ -48,13 +48,10 @@ following list some of koa ctx variable which you can use in koa-request-log
 
 - method
 - ip
-- query
 - url
 - protocol
 - status
 - duration
-- acceptsCharsets
-- acceptsEncodings
 
 ## usage
 
