@@ -15,7 +15,7 @@ function line(format, req, res){
     });
 
     return values.join(' ');
-};
+}
 
 line['date'] = function(req, res){
     return clfdate(new Date());  

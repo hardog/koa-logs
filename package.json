@@ -1,5 +1,5 @@
 {
-  "name": "koa-request-log",
+  "name": "koa-log",
   "version": "2.0.0",
   "description": "a middleware for koa requset log",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "url": "git+https://github.com/hardog/koa-request-log.git"
   },
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=4.0.0"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha test/*.js",
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/hardog/koa-request-log#readme",
   "dependencies": {
     "debug": "^2.2.0",
+    "mocha": "^3.1.2",
     "on-finished": "^2.3.0",
     "on-headers": "^1.0.1"
   },
