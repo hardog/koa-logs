@@ -1,6 +1,6 @@
 'use strict';
 
-const debug = require('debug');
+const debug = require('debug')('koa-logs');
 const on_headers = require('on-headers');
 const on_finished = require('on-finished');
 const line = require('./line');
@@ -18,8 +18,8 @@ module.exports = function(format, opts){
 
     return function *koa_request_log(next){
         debug('running koa request log middleware');
-        let req = this.request;
-        let res = this.response;
+        let req = this.req;
+        let res = this.res;
 
         req.start_at = undefined;
         res.start_at = undefined;
@@ -28,7 +28,7 @@ module.exports = function(format, opts){
             debug('skip request');
         }else{
             // log start time when request come
-            record_start_time.call(this);
+            record_start_time.call(this.req);
 
             // after res.end call, log end time
             on_headers(res, record_start_time)
@@ -70,10 +70,8 @@ function record_start_time(){
 }
 
 function finish_log(fmt, handle, line){
-    let req = this.request;
-    let res = this.response;
-
+    let self = this;
     return function(){
-        handle(line(fmt, req, res));
+        handle(line(fmt, self));
     };
 }
