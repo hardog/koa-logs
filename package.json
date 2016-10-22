@@ -1,33 +1,34 @@
 {
   "name": "koa-request-log",
-  "version": "1.0.3",
-  "description": "a middleware for koa requst log",
+  "version": "2.0.0",
+  "description": "a middleware for koa requset log",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ncuzp/koa-request-log.git"
+    "url": "git+https://github.com/hardog/koa-request-log.git"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=0.12.0"
   },
   "keywords": [
     "koa",
     "request",
     "log"
   ],
-  "author": "Frand",
+  "author": "hardog",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ncuzp/koa-request-log/issues"
+    "url": "https://github.com/hardog/koa-request-log/issues"
   },
-  "homepage": "https://github.com/ncuzp/koa-request-log#readme",
+  "homepage": "https://github.com/hardog/koa-request-log#readme",
   "dependencies": {
     "colors": "^1.1.2",
-    "log4js": "^0.6.33"
+    "debug": "^2.2.0",
+    "on-finished": "^2.3.0",
+    "on-headers": "^1.0.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "koa": "^1.2.0",
-    "koa-router": "^5.4.0"
+    "koa": "^1.2.0"
   }
 }
