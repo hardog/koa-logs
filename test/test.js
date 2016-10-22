@@ -147,8 +147,7 @@ describe('#index', function(){
         .post('/ignore')
         .end(function(){
             let params = str.split(' ');
-            console.log(params)
-            expect(params.indexOf('')).to.be.equal(5);
+            expect(params.indexOf('') !== -1).to.be.true;
             done();
         });
     });
