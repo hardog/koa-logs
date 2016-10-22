@@ -58,8 +58,8 @@ function log_handle(opts) {
 
     return function(msg){
         debug('handling log msg');
-        handle_fn(msg + '\n');
-        handle_stream.write(msg + '\n');
+        handle_fn(msg);
+        handle_stream.write(msg);
     };
 }
 

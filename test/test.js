@@ -19,6 +19,13 @@ describe('#index', function(){
         }
     };
 
+     it('should work when use app(log())', function(done){
+        app.use(log());
+        request(app.listen())
+        .get('/path')
+        .end(done);
+    });
+
     it('should /GET \\/path 404/.test(str) ok', function(done){
         app.use(log('tiny', opts));
         request(app.listen())
