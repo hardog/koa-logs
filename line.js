@@ -25,12 +25,6 @@ line['date'] = function(ctx){
     return (new Date()).toLocaleString();  
 };
 
-function pad2(num){
-  let str = String(num)
-  // 补齐两位
-  return (str.length === 1 ? '0' : '') + str
-}
-
 line['method'] = function(ctx){
     return ctx.req.method;
 };
