@@ -1,7 +1,7 @@
 'use strict';
 
 let type_map = {
-    tiny: ['date', 'method', 'url', 'status', 'reponse-time', 'length']
+    tiny: ['date', 'method', 'url', 'status', 'reponse-time', 'size']
 };
 
 module.exports = line;
@@ -53,7 +53,7 @@ line['status'] = function(req, res){
     return res.statusCode;
 };
 
-line['length'] = function(req, res){
+line['size'] = function(req, res){
     return res.length;
 };
 
