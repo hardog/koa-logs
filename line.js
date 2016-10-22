@@ -44,10 +44,9 @@ line['size'] = function(ctx){
 line['reponse-time'] = function(ctx){
     if (!ctx.req.start_at || !ctx.res.start_at) {
         // missing request and/or response start time
-        return
+        return;
     }
 
-    // calculate diff
     // 1纳秒等于1e-6秒
     let ms = (ctx.res.start_at[0] - ctx.req.start_at[0]) * 1e3 +
         (ctx.res.start_at[1] - ctx.req.start_at[1]) * 1e-6

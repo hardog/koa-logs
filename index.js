@@ -24,7 +24,8 @@ module.exports = function(format, opts){
         req.start_at = undefined;
         res.start_at = undefined;
 
-        if(skip !== false && skip(req, res)){
+        if(skip !== false && skip(this)){
+            /* istanbul ignore next */
             debug('skip request');
         }else{
             // log start time when request come
