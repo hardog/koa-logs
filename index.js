@@ -1,39 +1,78 @@
 'use strict';
 
-let options = require('./lib/opts'),
-	logger = require('./lib/log'),
-	parse = require('./lib/parse');
+const debug = require('debug');
+const on_headers = require('on-headers');
+const on_finished = require('on-finished');
+const line = require('./line');
 
-/**
- * a middleware for koa request log
- */
-module.exports = (param) => {
-	let opts = options(param),
-		log = logger(opts);
+// support 
+// opts.handle
+// opts.skip
+module.exports = function(format, opts){
+    debug('use koa request log');
+    opts = opts || {};
 
-	return function* (next){
-		let ctx = this,
-			requestInfo = [],
-			startRequstTime = new Date();
+    let fmt = format || 'tiny';
+    let handle = log_handle(opts);
+    let skip = opts.skip || false;
 
-	  	ctx.res.on('finish', () => {
-	    	let duration = ((new Date()) - startRequstTime);
+    if(skip !== false && skip(req, res)){
+        debug('skip request');
+        return;
+    }
 
-	  		// to info object
-			let key, val, len = opts.fields.length;
-			for(let i = 0; i < len; i++){
-				key = opts.fields[i];
-				val = ctx[key];
+    return function *koa_request_log(next){
+        debug('running koa request log middleware');
+        let req = this.request;
+        let res = this.response;
 
-				if(key === 'duration'){ val = duration; }
-				val = (typeof val === 'object' ? JSON.stringify(val) : val);
-				requestInfo.push(`${key}:${val}`);
-			}
+        req.start_at = undefined;
+        res.start_at = undefined;
 
-	    	// show info
-	    	log(parse(opts, requestInfo));
-	  	});
+        // log start time when request come
+        record_start_time.call(this);
 
-		yield next;
-	};
+        // after res.end call, log end time
+        on_headers(res, record_start_time)
+        // log when response finished
+        on_finished(res, finish_log(fmt, handle, line));
+
+        yield next;
+    };
 };
+
+function log_handle(opts) {
+    let handle_fn = empty;
+    let handle_stream = {wirte: empty};
+
+    if(!opts.handle){
+        opts.handle = console.log;
+    }
+
+    if(typeof opts.handle === 'function'){
+        handle_fn = opts.handle;
+    }
+
+    if(opts.handle instanceof Stream){
+        handle_stream = opts.handle;
+    }
+
+    return function(msg){
+        debug('handling log msg');
+        handle_fn(msg);
+        handle_stream.write(msg + '\n');
+    };
+}
+
+function empty(){}
+
+function record_start_time(){
+    debug('record start_at time');
+    this.start_at = process.hrtime();
+}
+
+function finish_log(fmt, handle, line){
+    return function(){
+        handle(line(fmt));
+    };
+}

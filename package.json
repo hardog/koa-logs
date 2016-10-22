@@ -10,6 +10,11 @@
   "engines": {
     "node": ">=0.12.0"
   },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test/*.js",
+    "lint": "./node_modules/.bin/eslint index.js line.js",
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec test"
+  },
   "keywords": [
     "koa",
     "request",
@@ -22,13 +27,13 @@
   },
   "homepage": "https://github.com/hardog/koa-request-log#readme",
   "dependencies": {
-    "colors": "^1.1.2",
     "debug": "^2.2.0",
     "on-finished": "^2.3.0",
     "on-headers": "^1.0.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "koa": "^1.2.0"
+    "koa": "^1.2.0",
+    "eslint": "^3.5.0"
   }
 }
