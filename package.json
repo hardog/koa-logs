@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hardog/koa-request-log.git"
+    "url": "git+https://github.com/hardog/koa-logs.git"
   },
   "engines": {
     "node": ">=4.0.0"
@@ -23,9 +23,9 @@
   "author": "hardog",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hardog/koa-request-log/issues"
+    "url": "https://github.com/hardog/koa-logs/issues"
   },
-  "homepage": "https://github.com/hardog/koa-request-log#readme",
+  "homepage": "https://github.com/hardog/koa-logs#readme",
   "dependencies": {
     "debug": "^2.2.0",
     "on-finished": "^2.3.0",
