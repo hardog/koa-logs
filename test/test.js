@@ -136,7 +136,7 @@ describe('#index', function(){
         .end(done);
     });
 
-    it('should not show response-time', function(done){
+    it.only('should not show response-time', function(done){
         let app = koa();
         app.use(log('tiny', opts));
         app.use(function *(){
@@ -147,6 +147,7 @@ describe('#index', function(){
         .post('/ignore')
         .end(function(){
             let params = str.split(' ');
+            console.log(params)
             expect(params.indexOf('')).to.be.equal(5);
             done();
         });
