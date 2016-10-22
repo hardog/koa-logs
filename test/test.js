@@ -136,7 +136,7 @@ describe('#index', function(){
         .end(done);
     });
 
-    it.only('should not show response-time', function(done){
+    it('should not show response-time', function(done){
         let app = koa();
         app.use(log('tiny', opts));
         app.use(function *(){
