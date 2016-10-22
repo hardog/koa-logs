@@ -1,4 +1,4 @@
-# koa-request-log
+# koa-logs
 
 [![Build Status](https://travis-ci.org/hardog/koa-request-log.svg?branch=master)](https://travis-ci.org/hardog/koa-request-log)
 [![Coverage Status](https://img.shields.io/codecov/c/github/hardog/koa-request-log.svg)](https://codecov.io/github/hardog/koa-request-log?branch=master)
