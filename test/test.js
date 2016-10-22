@@ -101,6 +101,7 @@ describe('#index', function(){
     });
 
     it('should work when use fs.createWriteStream', function(done){
+        let app = koa();
         let optts = {
             handle: fs.createWriteStream('test.txt')
         };

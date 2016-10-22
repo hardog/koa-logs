@@ -22,7 +22,9 @@ module.exports = function(format, opts){
         let res = this.res;
 
         req.start_at = undefined;
+        req.start_time = undefined;
         res.start_at = undefined;
+        res.start_time = undefined;
 
         if(skip !== false && skip(this)){
             /* istanbul ignore next */
@@ -58,9 +60,27 @@ function log_handle(opts) {
 
     return function(msg){
         debug('handling log msg');
+
+        need_show_terminal(msg, opts);
+        msg = need_break_line(msg, opts);
+
         handle_fn(msg);
         handle_stream.write(msg);
     };
+}
+
+function need_break_line(msg, opts){
+    if(opts.handle !== console.log){
+        return msg + '\n';
+    }
+
+    return msg;
+}
+
+function need_show_terminal(msg, opts){
+    if(opts.handle && opts.handle.write){
+        console.log(msg);
+    }
 }
 
 function empty(){}
@@ -68,6 +88,7 @@ function empty(){}
 function record_start_time(){
     debug('record start_at time');
     this.start_at = process.hrtime();
+    this.start_time = new Date();
 }
 
 function finish_log(fmt, handle, line){

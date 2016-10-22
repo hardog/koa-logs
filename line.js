@@ -22,7 +22,7 @@ function line(format, ctx){
 }
 
 line['date'] = function(ctx){
-    return (new Date()).toLocaleString();  
+    return (ctx.req.start_time).toLocaleString();  
 };
 
 line['method'] = function(ctx){
