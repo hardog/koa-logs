@@ -1,6 +1,6 @@
 {
   "name": "koa-logs",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "a middleware for koa requset log",
   "main": "index.js",
   "repository": {
@@ -28,7 +28,6 @@
   "homepage": "https://github.com/hardog/koa-logs#readme",
   "dependencies": {
     "debug": "^2.2.0",
-    "koa-morgan": "^0.4.0",
     "on-finished": "^2.3.0",
     "on-headers": "^1.0.1"
   },
