@@ -120,7 +120,7 @@ describe('#index', function(){
                     expect(e).to.be.undefined;
                 }
                 done();
-            }, 10);
+            }, 50);
         });
     });
 
