@@ -72,7 +72,7 @@ function log_handle(opts) {
 function further_deal_msg(msg, opts){
     // 处理process.stdout 不换行
     if(opts.handle !== console.log){
-        return msg + '\n';
+        msg = msg + '\n';
     }
 
     // 处理stream终端不打印消息问题
