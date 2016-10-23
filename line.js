@@ -3,7 +3,7 @@
 const debug = require('debug')('koa-logs');
 
 let type_map = {
-    tiny: ['date', 'method', 'url', 'status', 'reponse-time', 'size']
+    tiny: ':date :method :url :status :reponse-time :size'
 };
 
 module.exports = line;
@@ -11,37 +11,37 @@ module.exports = line;
 function line(format, ctx){
     debug(format, ' generating log msg');
 
-    let fields = type_map[format];
     let values = [];
+    let fields = type_map[format];
 
-    fields.forEach(function(v){
-        values.push(line[v](ctx));
+    fields.replace(/:([-\w]+)/g, function(_, field){
+        values.push(line[field](ctx));
     });
 
     return values.join(' ');
 }
 
-line['date'] = function(ctx){
-    return (ctx.req.start_time).toLocaleString();  
+line['date'] = function date(ctx){
+    return ctx.req.start_time;  
 };
 
-line['method'] = function(ctx){
+line['method'] = function method(ctx){
     return ctx.req.method;
 };
 
-line['url'] = function(ctx){
+line['url'] = function url(ctx){
     return ctx.req.url;
 };
 
-line['status'] = function(ctx){
+line['status'] = function status(ctx){
     return ctx.res.statusCode;
 };
 
-line['size'] = function(ctx){
+line['size'] = function size(ctx){
     return ctx.response.length;
 };
 
-line['reponse-time'] = function(ctx){
+line['reponse-time'] = function response_time(ctx){
     if (!ctx.req.start_at || !ctx.res.start_at) {
         // missing request and/or response start time
         return;
