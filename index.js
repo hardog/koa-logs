@@ -8,6 +8,7 @@ const line = require('./line');
 // support 
 // opts.handle
 // opts.skip
+// opts.interval
 module.exports = function(format, opts){
     debug('use koa request log');
     opts = opts || {};
@@ -15,6 +16,10 @@ module.exports = function(format, opts){
     let fmt = format || 'tiny';
     let handle = log_handle(opts);
     let skip = opts.skip || false;
+
+    opts.interval = opts.interval 
+                    ? opts.interval
+                    : 1000;
 
     return function *koa_request_log(next){
         debug('running koa request log middleware');
@@ -61,12 +66,40 @@ function log_handle(opts) {
         };
     }
 
+    // create buf stream
+    exe_fn = create_buf_stream(exe_fn, opts);
+
     return function(msg){
         debug('handling log msg');
 
         msg = further_deal_msg(msg, opts);
         exe_fn.write(msg);
     };
+}
+
+// from morgan
+function create_buf_stream(stream, opts){
+  let buf = [];
+  let timer = null;
+
+  // flush function
+  function flush(){
+    timer = null;
+    stream.write(buf.join('\n'));
+    buf.length = 0;
+  }
+
+  // write function
+  function write(str){
+    if(timer === null){
+      timer = setTimeout(flush, opts.interval);
+    }
+
+    buf.push(str);
+  }
+
+  // return a minimal "stream"
+  return {write: write};
 }
 
 function further_deal_msg(msg, opts){

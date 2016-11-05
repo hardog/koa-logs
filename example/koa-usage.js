@@ -6,6 +6,7 @@ const fs = require('fs');
 
 let app = koa();
 let opts = {
+    interval: 1000,
 	handle: process.stdout, //fs.createWriteStream('simpe.txt'), console.log(default)
 	skip: function(ctx){
 		// ctx is koa context
