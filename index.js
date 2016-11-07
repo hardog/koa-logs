@@ -108,7 +108,7 @@ function further_deal_msg(msg, opts){
         msg = msg + '\n';
     }
 
-    // 处理stream终端不打印消息问题
+    // 处理stream终端不打印消息
     if(opts.handle && opts.handle.write){
         console.log(msg);
     }
