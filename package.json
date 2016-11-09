@@ -1,6 +1,6 @@
 {
   "name": "koa-logs",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "a middleware for koa requset log",
   "main": "index.js",
   "repository": {
@@ -13,7 +13,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha test/*.js",
     "lint": "./node_modules/.bin/eslint index.js line.js",
-    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec test"
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha  -- -R spec test"
   },
   "keywords": [
     "koa",

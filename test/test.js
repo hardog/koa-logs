@@ -14,6 +14,7 @@ describe('#index', function(){
     let app = koa();
     let str;
     let opts = {
+        interval: 1,
         handle: function(msg){
             str = msg;
         }
@@ -43,6 +44,7 @@ describe('#index', function(){
     it('should assert str undefined when use skip', function(done){
         let str;
         let optts = {
+            interval: 1,
             handle: function(msg){
                 str = msg;
             },
@@ -124,5 +126,28 @@ describe('#index', function(){
         request(app.listen())
         .post('/ignore')
         .end(done);
+    });
+
+    it('should console include /this is url/ when rewrite', function(done){
+        let app = koa();
+        let opts = {
+            interval: 1,
+            handle: function(msg){
+                expect(/this is url/.test(msg)).to.be.true;
+            },
+            rewrite: {
+                url: function(){
+                    return 'this is url'
+                }
+            }
+        };
+
+        app.use(log('tiny', opts));
+
+        request(app.listen())
+        .post('/path')
+        .end(function(){
+            setTimeout(done, 1);
+        });
     });
 });

@@ -3,7 +3,7 @@
 const debug = require('debug')('koa-logs');
 
 let type_map = {
-    tiny: ':date :method :url :status :reponse-time :size'
+    tiny: ':date :method :url :status :reponse-time :size :holdplace'
 };
 
 module.exports = line;
@@ -20,6 +20,10 @@ function line(format, ctx){
 
     return values.join(' ');
 }
+
+line['holdplace'] = function holdplace(ctx){
+    return '';
+};
 
 line['date'] = function date(ctx){
     return ctx.req.start_time;  

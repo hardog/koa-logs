@@ -17,6 +17,8 @@ module.exports = function(format, opts){
     let handle = log_handle(opts);
     let skip = opts.skip || false;
 
+    rewrite(opts, line);
+
     opts.interval = opts.interval 
                     ? opts.interval
                     : 1000;
@@ -50,6 +52,17 @@ module.exports = function(format, opts){
         yield next;
     };
 };
+
+function rewrite(opts, line){
+    let rewrite = opts.rewrite || {};
+    let keys = Object.keys(rewrite);
+    let len = keys.length;
+
+    for(let i = 0; i < len; i++){
+        let key = keys[i];
+        line[key] = rewrite[key];
+    }
+}
 
 function log_handle(opts) {
     let exe_fn = opts.handle;
